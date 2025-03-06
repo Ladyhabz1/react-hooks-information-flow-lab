@@ -4,9 +4,14 @@ import itemData from "../data/items";
 
 function App() {
   const [isDarkMode, setIsDarkMode] = useState(false);
+  const [selectedCategory, setSelectedCategory] = useState("All");
 
   function onDarkModeClick() {
     setIsDarkMode((isDarkMode) => !isDarkMode);
+  }
+
+  function handleCategoryChange(category) {
+    setSelectedCategory(category);
   }
 
   return (
@@ -17,7 +22,11 @@ function App() {
           {isDarkMode ? "Dark" : "Light"} Mode
         </button>
       </header>
-      <ShoppingList items={itemData} />
+      <ShoppingList 
+        items={itemData} 
+        selectedCategory={selectedCategory} 
+        onCategoryChange={handleCategoryChange} 
+      />
     </div>
   );
 }
